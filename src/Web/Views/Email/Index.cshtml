@@ -1,0 +1,36 @@
+﻿@model Web.ViewModels.EmailViewModel
+
+@{
+    ViewBag.Title = "title";
+}
+
+<form asp-action="SendEmail">
+    
+    @if (!string.IsNullOrEmpty(Model.ConfirmationMessage))
+    {
+        <div class="alert alert-success"><strong>Success!</strong> @Model.ConfirmationMessage</div>
+    }
+
+    <div class="form-horizontal">
+        <h4>Send email</h4>
+        <hr/>
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="Recipient" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Recipient" class="form-control"/>
+                <span asp-validation-for="Recipient" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Message" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Message" class="form-control"/>
+                <span asp-validation-for="Message" class="text-danger"></span>
+            </div>
+        </div>
+        <button type="submit">Send email</button>
+    </div>
+
+</form>
+
